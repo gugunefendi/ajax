@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contoh Proyek jQuery AJAX</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="box" style="width: 1000px; display: flex;">
+        <div class="name" style="width: 200px;">
+            <h2>Nama Pengguna</h2>
+            <ul id="user-list"></ul>
+        </div>
+        <div class="email" style="width: 200px;">
+            <h2>Email Pengguna</h2>
+            <ul id="email-list"></ul>
+        </div>
+        <div class="email" style="width: 200px;">
+            <h2>Alamat</h2>
+            <ul id="email-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Mengambil data pengguna dari server menggunakan AJAX
+            $.get("https://jsonplaceholder.typicode.com/users", function (users) {
+                // Memproses respons
+                for (var i = 0; i < users.length; i++) {
+                    var user = users[i];
+                    var name = $("<li>").text(user.name);
+                    var email = $("<li>").text(user.email);
+                    $("#user-list").append(name);
+                    $("#email-list").append(email);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
